@@ -1,6 +1,8 @@
  news since 3.2.1
 --------------------------------------------------------------------------------
 + remove obsolete CL option --smt2-model (use -m --output-format=smt2 instead)
++ new API calls
+  - boolector_get_value
 
  news for release 3.2.1 since 3.2.0
 --------------------------------------------------------------------------------
