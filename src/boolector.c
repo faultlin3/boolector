@@ -717,6 +717,9 @@ boolector_set_sat_solver (Btor *btor, const char *solver)
 #ifndef BTOR_USE_PICOSAT
       || sat_engine == BTOR_SAT_ENGINE_PICOSAT
 #endif
+#ifndef BTOR_USE_IPASIR
+      || sat_engine == BTOR_SAT_ENGINE_IPASIR
+#endif
 #ifndef BTOR_USE_CMS
       || sat_engine == BTOR_SAT_ENGINE_CMS
 #endif
@@ -806,6 +809,9 @@ boolector_set_opt (Btor *btor, BtorOption opt, uint32_t val)
 #endif
 #ifndef BTOR_USE_PICOSAT
         || val == BTOR_SAT_ENGINE_PICOSAT
+#endif
+#ifndef BTOR_USE_IPASIR
+        || val == BTOR_SAT_ENGINE_IPASIR
 #endif
 #ifndef BTOR_USE_CMS
         || val == BTOR_SAT_ENGINE_CMS

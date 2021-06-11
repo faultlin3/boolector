@@ -21,13 +21,14 @@
 #include "sat/btorlgl.h"
 #include "sat/btorminisat.h"
 #include "sat/btorpicosat.h"
+#include "sat/btoripasir.h"
 #include "utils/btorutil.h"
 
 /*------------------------------------------------------------------------*/
 
 #if !defined(BTOR_USE_LINGELING) && !defined(BTOR_USE_PICOSAT)  \
     && !defined(BTOR_USE_MINISAT) && !defined(BTOR_USE_CADICAL) \
-    && !defined(BTOR_USE_CMS)
+    && !defined(BTOR_USE_CMS) && !defined(BTOR_USE_IPASIR)
 #error "no SAT solver configured"
 #endif
 
@@ -297,6 +298,9 @@ btor_sat_enable_solver (BtorSATMgr *smgr)
   opt = btor_opt_get (smgr->btor, BTOR_OPT_SAT_ENGINE);
   switch (opt)
   {
+#ifdef BTOR_USE_IPASIR
+    case BTOR_SAT_ENGINE_IPASIR: btor_sat_enable_ipasir(smgr); break;
+#endif
 #ifdef BTOR_USE_LINGELING
     case BTOR_SAT_ENGINE_LINGELING: btor_sat_enable_lingeling (smgr); break;
 #endif
